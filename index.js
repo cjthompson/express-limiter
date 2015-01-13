@@ -1,3 +1,5 @@
+var TooManyRequestsError = require('./lib/HttpError').TooManyRequestsError;
+
 module.exports = function (app, db) {
   return function (opts) {
     var middleware = function (req, res, next) {
@@ -40,7 +42,12 @@ module.exports = function (app, db) {
 
           if (!opts.skipHeaders) res.set('Retry-After', after)
 
-          res.status(429).send('Rate limit exceeded')
+          if (opts.method && opts.path) {
+              res.status(429).send('Rate limit exceeded')
+          } else {
+              return next(new TooManyRequestsError('Rate limit exceeded', limit.total, limit.remaining, after))
+          }
+
         })
 
       })
