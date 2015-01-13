@@ -27,11 +27,11 @@ module.exports = function (app, db) {
         }
 
         // do not allow negative remaining
-        limit.remaining = Math.max(Number(limit.remaining) - 1, 0)
+        limit.remaining = Math.max(Number(limit.remaining) - 1, -1)
         db.set(key, JSON.stringify(limit), 'PX', opts.expire, function (e) {
           if (!opts.skipHeaders) {
             res.set('X-RateLimit-Limit', limit.total)
-            res.set('X-RateLimit-Remaining', limit.remaining)
+            res.set('X-RateLimit-Remaining', Math.max(limit.remaining,0))
           }
 
           if (limit.remaining) return next()
