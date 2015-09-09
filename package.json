@@ -1,6 +1,6 @@
 {
   "name": "express-limiter",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "rate limiter middleware for express applications",
   "main": "index.js",
   "author": "Dustin Diaz",
@@ -17,14 +17,14 @@
   },
   "homepage": "https://github.com/ded/express-limiter",
   "devDependencies": {
+    "chai": "^3.2.0",
     "express": "4.0.0",
-    "redis": "~0.10.1",
-    "mocha": "~1.18.2",
-    "chai": "~1.9.1",
-    "sinon": "~1.9.0",
-    "sinon-chai": "~2.5.0",
-    "supertest": "~0.10.0",
-    "valentine": "~2.0.2",
-    "jshint": "~2.5.0"
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.2",
+    "redis": "^1.0.0",
+    "sinon": "^1.16.1",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^1.1.0",
+    "valentine": "^2.1.4"
   }
 }
